@@ -193,6 +193,8 @@ export type IStoreGeoCoordinates = {
 export type IStoreImage = {
   /** Alias for the input image. */
   alternateName: Scalars['String'];
+  /** Keyword for the image. */
+  keywords?: Maybe<Scalars['String']>;
   /** Image input URL. */
   url: Scalars['String'];
 };
@@ -849,6 +851,8 @@ export type StoreImage = {
   __typename?: 'StoreImage';
   /** Alias for the image. */
   alternateName: Scalars['String'];
+  /** Keyword for the image. */
+  keywords?: Maybe<Scalars['String']>;
   /** Image URL. */
   url: Scalars['String'];
 };

@@ -197,6 +197,8 @@ export type IStoreGeoCoordinates = {
 export type IStoreImage = {
   /** Alias for the input image. */
   alternateName: Scalars['String']
+  /** Keyword for the image. */
+  keywords: InputMaybe<Scalars['String']>
   /** Image input URL. */
   url: Scalars['String']
 }
@@ -802,6 +804,8 @@ export type StoreGeoCoordinates = {
 export type StoreImage = {
   /** Alias for the image. */
   alternateName: Scalars['String']
+  /** Keyword for the image. */
+  keywords: Maybe<Scalars['String']>
   /** Image URL. */
   url: Scalars['String']
 }
@@ -1079,7 +1083,7 @@ export type ProductSummary_ProductFragment = {
   id: string
   brand: { name: string; brandName: string }
   isVariantOf: { productGroupID: string; name: string }
-  image: Array<{ url: string; alternateName: string }>
+  image: Array<{ url: string; alternateName: string; keywords: string | null }>
   offers: {
     lowPrice: number
     offers: Array<{
@@ -1131,7 +1135,7 @@ export type ProductDetailsFragment_ProductFragment = {
       availableVariations: any | null
     } | null
   }
-  image: Array<{ url: string; alternateName: string }>
+  image: Array<{ url: string; alternateName: string; keywords: string | null }>
   brand: { name: string }
   offers: {
     lowPrice: number
@@ -1208,7 +1212,11 @@ export type ServerProductQueryQuery = {
     breadcrumbList: {
       itemListElement: Array<{ item: string; name: string; position: number }>
     }
-    image: Array<{ url: string; alternateName: string }>
+    image: Array<{
+      url: string
+      alternateName: string
+      keywords: string | null
+    }>
     offers: {
       lowPrice: number
       highPrice: number
@@ -1259,7 +1267,11 @@ export type ValidateCartMutationMutation = {
           sku: string
           name: string
           gtin: string
-          image: Array<{ url: string; alternateName: string }>
+          image: Array<{
+            url: string
+            alternateName: string
+            keywords: string | null
+          }>
           brand: { name: string }
           isVariantOf: {
             productGroupID: string
@@ -1294,7 +1306,11 @@ export type CartItemFragment = {
     sku: string
     name: string
     gtin: string
-    image: Array<{ url: string; alternateName: string }>
+    image: Array<{
+      url: string
+      alternateName: string
+      keywords: string | null
+    }>
     brand: { name: string }
     isVariantOf: {
       productGroupID: string
@@ -1318,7 +1334,7 @@ export type CartProductItemFragment = {
   sku: string
   name: string
   gtin: string
-  image: Array<{ url: string; alternateName: string }>
+  image: Array<{ url: string; alternateName: string; keywords: string | null }>
   brand: { name: string }
   isVariantOf: {
     productGroupID: string
@@ -1366,7 +1382,11 @@ export type ClientManyProductsQueryQuery = {
           id: string
           brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
-          image: Array<{ url: string; alternateName: string }>
+          image: Array<{
+            url: string
+            alternateName: string
+            keywords: string | null
+          }>
           offers: {
             lowPrice: number
             offers: Array<{
@@ -1443,7 +1463,11 @@ export type ClientProductQueryQuery = {
         availableVariations: any | null
       } | null
     }
-    image: Array<{ url: string; alternateName: string }>
+    image: Array<{
+      url: string
+      alternateName: string
+      keywords: string | null
+    }>
     brand: { name: string }
     offers: {
       lowPrice: number
@@ -1480,7 +1504,11 @@ export type ClientSearchSuggestionsQueryQuery = {
         id: string
         brand: { name: string; brandName: string }
         isVariantOf: { productGroupID: string; name: string }
-        image: Array<{ url: string; alternateName: string }>
+        image: Array<{
+          url: string
+          alternateName: string
+          keywords: string | null
+        }>
         offers: {
           lowPrice: number
           offers: Array<{
