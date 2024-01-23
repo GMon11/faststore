@@ -492,6 +492,8 @@ export type QueryShippingArgs = {
 
 /** Search result. */
 export type SearchMetadata = {
+  /** Indicates how the search engine corrected the misspelled word by using fuzzy logic. */
+  fuzzy: Scalars['String']
   /** Indicates if the search term was misspelled. */
   isTermMisspelled: Scalars['Boolean']
   /** Logical operator used to run the search. */
@@ -1386,6 +1388,7 @@ export type ClientManyProductsQueryQuery = {
 export type SearchEvent_MetadataFragment = {
   isTermMisspelled: boolean
   logicalOperator: string
+  fuzzy: string
 }
 
 export type ClientProductGalleryQueryQueryVariables = Exact<{
@@ -1419,7 +1422,11 @@ export type ClientProductGalleryQueryQuery = {
           max: { selected: number; absolute: number }
         }
     >
-    metadata: { isTermMisspelled: boolean; logicalOperator: string } | null
+    metadata: {
+      isTermMisspelled: boolean
+      logicalOperator: string
+      fuzzy: string
+    } | null
   }
 }
 
@@ -1494,7 +1501,11 @@ export type ClientSearchSuggestionsQueryQuery = {
       }>
     }
     products: { pageInfo: { totalCount: number } }
-    metadata: { isTermMisspelled: boolean; logicalOperator: string } | null
+    metadata: {
+      isTermMisspelled: boolean
+      logicalOperator: string
+      fuzzy: string
+    } | null
   }
 }
 

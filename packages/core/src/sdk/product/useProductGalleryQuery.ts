@@ -19,6 +19,7 @@ export const query = gql`
   fragment SearchEvent_metadata on SearchMetadata {
     isTermMisspelled
     logicalOperator
+    fuzzy
   }
 
   query ClientProductGalleryQuery(
